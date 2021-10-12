@@ -39,7 +39,7 @@ class DoublyLinkedList {
   void printReverse() ;
 //  bool findItem( T, NodeType<T>*& predecessor)
  private:
-  int value;
+  int value{};
 
 };
 
