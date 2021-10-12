@@ -12,7 +12,7 @@ template<class T>
 struct NodeType {
   T data;
   NodeType<T> *next;
-  NodeType<T> *back;
+  NodeType<T> *back ;
 
 };
 template<class T>

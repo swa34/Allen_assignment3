@@ -12,27 +12,30 @@ DoublyLinkedList<T>:: DoublyLinkedList(){
 
 template <class T>
 void DoublyLinkedList<T>::insertItem(T item) {
-  auto *newNode = new NodeType<T>[1];
+  auto *newNode = new NodeType<T>;
   newNode->data = item;
   newNode->next = NULL;
   newNode->back = NULL;
   auto current = head;
-  if (head == NULL) {
+  if (head == nullptr) {
 	head = newNode;
-	return;
+	tail = newNode;
+
+  }else {
+	head->back = newNode;
+	newNode->next = head;
+	head = newNode;
   }
-  head->back = newNode;
-  newNode->next = head;
-  head = newNode;
+  length++;
 }
 template <class T>
-void DoublyLinkedList<T>::print(){
-  NodeType<T>*elem =head;
-  while(elem != NULL){
-	cout << elem->data << " ";
-	elem = elem->next;
+void DoublyLinkedList<T>::print() {
+
+  while (tail != NULL) {
+	cout << tail->data << " ";
+	tail = tail->back;
+
   }
-  //cout << endl;
 }
 
 
@@ -42,18 +45,13 @@ void DoublyLinkedList<T>::print(){
 //}
 template <class T>
 void DoublyLinkedList<T>::printReverse() {
-  auto *newNode = new NodeType<T>;
- // newNode->data = item;
-  newNode->next = NULL;
-  newNode->back = NULL;
-  auto current = head;
-  if (head == NULL) {
-	head = newNode;
-	return;
+
+  NodeType<T>*elem =head;
+  while(elem != NULL){
+	cout << elem->data << " ";
+	elem = elem->next;
   }
-  head->back = newNode;
-  newNode->next = head;
-  head = newNode;
+  //cout << endl;
 }
 
 
