@@ -99,6 +99,7 @@ int main() {
 	  }
 	  case 'r': { // insert command that inserts a node in the linked list
 		intList.printReverse();
+		intList.print();
 		break;
 	  }
 	  case 'q': { // quit command that stops the while loop and exits the program

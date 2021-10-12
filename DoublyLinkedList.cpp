@@ -99,21 +99,25 @@ void DoublyLinkedList<T>::print() {
 
 template<class T>
 void DoublyLinkedList<T>::printReverse() {
-//
-//  NodeType<T>*elem =head;
-//  while(elem != nullptr){
-//	cout << elem->data << " ";
-//	elem = elem->next;
-//  }
-//  //cout << endl;
-//}
+  NodeType<T> *temp = NULL;
+  NodeType<T> *current = head;
 
-  while (tail != nullptr) {
-	cout << tail->data << " ";
-	tail = tail->back;
-
+  /* swap next and prev for all nodes of
+  doubly linked list */
+  while (current != NULL)
+  {
+	temp = current->back;
+	current->back = current->next;
+	current->next = temp;
+	current = current->back;
   }
+
+  /* Before changing the head, check for the cases like empty
+	  list and list with only one node */
+  if(temp != NULL )
+	head = temp->back;
 }
+
 
 template
 class DoublyLinkedList<int>;
