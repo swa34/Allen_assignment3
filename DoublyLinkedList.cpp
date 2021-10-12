@@ -51,6 +51,7 @@ void DoublyLinkedList<T>::insertItem(T item) {
 }
 template<class T>
 void DoublyLinkedList<T>::deleteItem(T &item){
+  //if()
   if (head == NULL)
   {
 	return;

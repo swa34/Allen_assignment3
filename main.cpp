@@ -78,6 +78,19 @@ int main() {
 
 		break;
 	  }
+	  case 'd': {
+		int num;
+
+		cout << "Number to delete: ";
+		cin >> num;
+		intList.deleteItem(num);
+		cout << endl;
+		intList.print();
+
+		cout << endl;
+
+		break;
+	  }
 	  case 'p': { // insert command that inserts a node in the linked list
 		intList.print();
 		stringList.print();
