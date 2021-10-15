@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include "DoublyLinkedList.h"
 
 using namespace std;
@@ -117,6 +118,65 @@ void DoublyLinkedList<T>::printReverse() {
   if(temp != NULL )
 	head = temp->back;
 }
+template<class T>
+void DoublyLinkedList<T>:: sorting(  T &item) // ı call sorting function in the insertion function
+{
+  NodeType<T>* newNode = new NodeType<T>;
+  newNode->data = item;
+  newNode->next = nullptr;
+  newNode->back = nullptr;
+
+  NodeType<T>* current = head;
+
+  if(head == nullptr && tail == nullptr) { // newNode is being inserted into empty list
+	head = newNode;
+	tail = newNode;
+
+	length++;
+
+	return;
+  }
+
+  bool isDuplicate = false;
+  while(current != nullptr) {
+	if(head->data > item) // keep going
+	  current = current->next;
+	  break;
+	}
+
+
+  if(current == nullptr ) { // newNode is being inserted as last element
+	tail->next = newNode;
+	newNode->back = tail;
+
+	tail = newNode;
+
+	length++;
+  }
+
+	// newNode is being inserted into very beginning
+  else if(current->back == nullptr ) {
+	newNode->next = current;
+	current->back = newNode;
+
+	head = newNode;
+
+	length++;
+  }
+
+  else if(!isDuplicate) { // general case insert
+	newNode->back = current->back;
+	current->back->next = newNode;
+	newNode->next = current;
+	current->back = newNode;
+
+	length++;
+  }
+}
+
+
+
+
 
 
 template

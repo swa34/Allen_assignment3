@@ -52,9 +52,7 @@ int main() {
 		  break;
 		}
 		case 'd': {
-		  int num;
 		  string str;
-		  float flt;
 		  string s;
 		  int x;
 		  cout << "Number to delete: ";
@@ -107,7 +105,71 @@ int main() {
 	}
 	//dbList.print();
 	fs.close();
+	cout << "insert (i), delete (d), length (l), print (p), deleteSub (b), mode (m),\n"
+			"printReverse(r), swapAtl(s), quit (q)" << endl;
+	bool loop = true;
+	char character; // character input when entering a command
 
+	while (loop) {
+	  cout << "\nEnter a command: ";
+	  cin >> character;
+	  cout << "\n";
+
+	  switch (character) {
+		case 'i': {
+		  float num;
+		  cout << "Item to insert: ";
+		  cin >> num;
+		  cout << num << endl;
+		  dbList.insertItem(num);
+		  cout << endl;
+		  dbList.print();
+
+		  cout << endl;
+
+		  break;
+		}
+		case 'd': {
+		  string str;
+		  string s;
+		  float x;
+		  cout << "Number to delete: ";
+		  cin.ignore();
+		  getline( cin, str );
+		  istringstream iss(str);
+		  while(iss >> x){
+			dbList.deleteItem(x);
+
+		  }
+		  dbList.print();
+
+
+		  break;
+		}
+		case 'p': {
+		  dbList.print();
+		  break;
+		}
+		case 'r': {
+		  dbList.printReverse();
+		  dbList.print();
+		  stringList.printReverse();
+		  stringList.print();
+		  break;
+		}
+		case 'q': { // quit command that stops the while loop and exits the program
+		  cout << "Quitting program..." << endl;
+		  loop = false;
+		  break;
+		}
+		default: { // this will print when the command is invalid
+		  cout << "Invalid command, try again!" << endl;
+		  break;
+		}
+
+	  }
+	}
+///*START of STRING *********/
   } else if (input == 's') {
 	ifstream fs;
 	"C:\\Users\\scott\\CLionProjects\\Allen_assignment2\\input.txt";
@@ -120,76 +182,75 @@ int main() {
 	}
 	//stringList.print();
 	fs.close();
+	cout << "insert (i), delete (d), length (l), print (p), deleteSub (b), mode (m),\n"
+			"printReverse(r), swapAtl(s), quit (q)" << endl;
+	bool loop = true;
+	char character; // character input when entering a command
+
+	while (loop) {
+	  cout << "\nEnter a command: ";
+	  cin >> character;
+	  cout << "\n";
+
+	  switch (character) {
+		case 'i': {
+		  string num;
+		  cout << "Item to insert: ";
+		  cin.ignore();
+		  getline( cin, num );
+		 // stringList.insertItem(num);
+		  stringList.sorting(num);
+		  cout << endl;
+		  stringList.print();
+
+		  cout << endl;
+
+		  break;
+		}
+		case 'd': {
+		  string str;
+		  string s;
+		  float x;
+		  cout << "Number to delete: ";
+		  cin.ignore();
+		  getline( cin, str );
+		  istringstream iss(str);
+		  while(iss >> x){
+			dbList.deleteItem(x);
+
+		  }
+		  dbList.print();
+
+
+		  break;
+		}
+		case 'p': {
+		  stringList.print();
+		  break;
+		}
+		case 'r': {
+		  dbList.printReverse();
+		  dbList.print();
+		  stringList.printReverse();
+		  stringList.print();
+		  break;
+		}
+		case 'q': { // quit command that stops the while loop and exits the program
+		  cout << "Quitting program..." << endl;
+		  loop = false;
+		  break;
+		}
+		default: { // this will print when the command is invalid
+		  cout << "Invalid command, try again!" << endl;
+		  break;
+		}
+
+	  }
+	}
+
 
   } else {
 	cout << "Invalid entry";
   }
-//  cout << "insert (i), delete (d), length (l), print (p), deleteSub (b), mode (m),\n"
-//		  "printReverse(r), swapAtl(s), quit (q)" << endl;
-//  bool loop = true;
-//  char character; // character input when entering a command
-//
-//  while (loop) {
-//	cout << "\nEnter a command: ";
-//	cin >> character;
-//	cout << "\n";
-//
-//	switch (character) {
-//	  case 'i': {
-//		int num;
-//		cout << "Number to insert: ";
-//		cin >> num;
-//		intList.insertItem(num);
-//		cout << endl;
-//		intList.print();
-//
-//		cout << endl;
-//
-//		break;
-//	  }
-//	  case 'd': {
-//		int num;
-//		string str;
-//		float flt;
-//		string s;
-//		int x;
-//		cout << "Number to delete: ";
-//		cin.ignore();
-//		getline( cin, str );
-//		  istringstream iss(str);
-//		  while(iss >> x){
-//		  intList.deleteItem(x);
-//
-//		}
-//           intList.print();
-//
-//
-//		break;
-//	  }
-//	  case 'p': {
-//		intList.print();
-//		stringList.print();
-//		dbList.print();
-//		break;
-//	  }
-//	  case 'r': {
-//		intList.printReverse();
-//		intList.print();
-//		stringList.printReverse();
-//		stringList.print();
-//		break;
-//	  }
-//	  case 'q': { // quit command that stops the while loop and exits the program
-//		cout << "Quitting program..." << endl;
-//		loop = false;
-//		break;
-//	  }
-//	  default: { // this will print when the command is invalid
-//		cout << "Invalid command, try again!" << endl;
-//		break;
-//	  }
-//
-//	}
-//  }
 }
 

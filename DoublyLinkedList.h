@@ -10,9 +10,12 @@ using namespace std;
 
 template<class T>
 struct NodeType {
+  int strsrt;
   T data;
   NodeType<T> *next;
   NodeType<T> *back ;
+  NodeType<T>* left;
+  NodeType<T>* right;
 
 };
 template<class T>
@@ -37,6 +40,7 @@ class DoublyLinkedList {
   auto getValue() ;
   void initialize(T num);
   void printReverse() ;
+  void sorting( T &item);
 //  bool findItem( T, NodeType<T>*& predecessor)
  private:
   int value{};
