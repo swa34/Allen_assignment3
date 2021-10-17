@@ -26,7 +26,7 @@ class DoublyLinkedList {
  public:
 
   DoublyLinkedList();
-   ~DoublyLinkedList();
+   //~DoublyLinkedList();
   int lengthIs() const;
   void insertItem(T &item);
   void deleteItem(T &item);
@@ -36,7 +36,7 @@ class DoublyLinkedList {
   void initialize(T num);
   void printReverse();
   void sorting(T &item);
-  T searchForL(T item);
+
   void swapAlternate();
   T mode();
   void printRange(NodeType<T> *startingNode, NodeType<T> *endingNode);

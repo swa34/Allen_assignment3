@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include<vector>
-#include<string>
+
 #include <sstream>
 #include "DoublyLinkedList.h"
 using namespace std;
@@ -87,9 +87,6 @@ int main() {
 		}
 		case 'r': {
 		  intList.printReverse();
-		  intList.print();
-		  stringList.printReverse();
-		  stringList.print();
 		  break;
 		}
 		case 'l': {
@@ -182,9 +179,6 @@ int main() {
 		}
 		case 'r': {
 		  dbList.printReverse();
-		  dbList.print();
-		  stringList.printReverse();
-		  stringList.print();
 		  break;
 		}
 		case 'm': {
@@ -198,6 +192,12 @@ int main() {
 		  cout << "\nSwapped List: ";
 		  dbList.swapAlternate();
 		  dbList.print();
+		  break;
+		}
+		case 'l': {
+
+		  cout << "The length is: " << dbList.lengthIs() << endl;
+
 		  break;
 		}
 		case 'q': { // quit command that stops the while loop and exits the program
@@ -269,10 +269,8 @@ int main() {
 		  break;
 		}
 		case 'r': {
-		  dbList.printReverse();
-		  dbList.print();
+
 		  stringList.printReverse();
-		  stringList.print();
 		  break;
 		}
 		case 'm': {

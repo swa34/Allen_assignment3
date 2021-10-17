@@ -67,34 +67,42 @@ void DoublyLinkedList<T>::insertItem(T &item) {
 
 template<class T>
 void DoublyLinkedList<T>::deleteItem(T &item) {
-  //if()
-  if (head == nullptr) {
-	return;
-  } else {
-	if (head->data == item) {
-	  NodeType<T> *temp = head;
-	  head = head->next;
-	  if (head != nullptr)
-		head->back = nullptr;
-	  delete (temp);
-	} else {
-	  NodeType<T> *temp = head->next;
-	  while (temp != nullptr) {
-		if (temp->data == item) {
-		  {
-			temp->back->next = temp->next;
-			if (temp->next != nullptr)
-			  temp->next->back = temp->back;
-		  }
-		  NodeType<T> *toDelete = temp;
-		  temp = temp->back;
-		  if (toDelete != nullptr)
-			delete (toDelete);
-		}
-		temp = temp->next;
-	  }
-	  length--;
+  NodeType<T> *t = head;
+  while(t!=NULL){
+	if(t->data==item){
+	  break;
 	}
+
+	t = t->next;
+  }
+  if(t!=NULL){
+	if(t->next==NULL && t->back==NULL){
+	  free(t);
+	  head = NULL;
+	  tail = NULL;
+	}
+	else if(t->back == NULL){
+	  head = head->next;
+	  head->back = NULL;
+	  free(t);
+	}
+	else if(t->next==NULL){
+	  tail = tail->back;
+	  tail->next=NULL;
+	  free(t);
+	}
+	else{
+	  NodeType<T> *p, *n;
+	  p = t->back;
+	  n = t->next;
+	  p->next = n;
+	  n->back = p;
+	  free(t);
+	}
+
+  }
+  else {
+	cout<<"Item not in list!"<<endl;
   }
 }
 
@@ -110,22 +118,16 @@ void DoublyLinkedList<T>::print() {
 
 template<class T>
 void DoublyLinkedList<T>::printReverse() {
-  NodeType<T> *temp = nullptr;
-  NodeType<T> *current = head;
-
-  /* swap next and prev for all nodes of
-  doubly linked list */
-  while (current != nullptr) {
-	temp = current->back;
-	current->back = current->next;
-	current->next = temp;
-	current = current->back;
+  if(tail==NULL){
+	cout<<"List is Empty!"<<endl;
   }
-
-  /* Before changing the head, check for the cases like empty
-	  list and list with only one node */
-  if (temp != nullptr)
-	head = temp->back;
+  else{
+	NodeType<T> *t = tail;
+	while(t!=NULL){
+	  cout<<t->data<<" ";
+	  t = t->back;
+	}
+  }
 }
 template<class T>
 void DoublyLinkedList<T>::sorting(T &item) // ı call sorting function in the insertion function
@@ -181,8 +183,14 @@ void DoublyLinkedList<T>::sorting(T &item) // ı call sorting function in the in
 }
 template<class T>
 int DoublyLinkedList<T>::lengthIs() const {
-  return length;
-}
+	int l=0;
+	NodeType<T> *t = head;
+	while(t!=NULL){
+	  l++;
+	  t = t->next;
+	}
+	return l;
+  }
 
 //int DoublyLinkedList<T>::countIs() const {
 //  return count;
