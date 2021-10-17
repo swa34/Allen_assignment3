@@ -6,6 +6,7 @@
 #include "DoublyLinkedList.h"
 using namespace std;
 
+
 int main() {
   DoublyLinkedList<int> intList;
   DoublyLinkedList<float> dbList;
@@ -50,8 +51,8 @@ int main() {
 		  break;
 		}
 		case 'b': {
-		  int lb=0;
-		  int ub=0;
+		  int lb = 0;
+		  int ub = 0;
 		  cout << "Enter lower bound: ";
 		  cin >> lb;
 		  cout << "Enter upper bound: ";
@@ -59,7 +60,7 @@ int main() {
 		  cout << "Original List: ";
 		  intList.print();
 		  cout << "\nModified List: ";
-		  intList.deleteSubsection(lb,ub);
+		  intList.deleteSubsection(lb, ub);
 		  intList.print();
 		  break;
 		}
@@ -214,96 +215,96 @@ int main() {
 	}
 ///*START of STRING *********/
   } else if (input == 's') {
-	ifstream fs;
-	fs.open(R"(C:\Users\scott\CLionProjects\Allen_assignment3\string-input)", fstream::in); // reads input file
-	//fs.open(argv[1], fstream::in); // reads input file
-	string str;
-	while (getline(fs, str)) {
-	  //arr.push_back(n);
-	  stringList.insertItem(str);
-	}
-	//stringList.print();
-	fs.close();
-	cout << "insert (i), delete (d), length (l), print (p), deleteSub (b), mode (m),\n"
-			"printReverse(r), swapAtl(s), quit (q)" << endl;
-	bool loop = true;
-	char character; // character input when entering a command
 
-	while (loop) {
-	  cout << "\nEnter a command: ";
-	  cin >> character;
-	  cout << "\n";
+	fstream fs("C:\\Users\\scott\\CLionProjects\\Allen_assignment3\\string-input", ios::in); // reads input file
+	//fs.open(argv[1], ios::in); // reads input file
 
-	  switch (character) {
-		case 'i': {
-		  string num;
-		  cout << "Item to insert: ";
-		  cin.ignore();
-		  getline(cin, num);
-		 // stringList.insertItem(num);
-		   stringList.sorting(num);
-		  cout << endl;
-		  stringList.print();
-
-		  cout << endl;
-
-		  break;
-		}
-		case 'd': {
-		  string str;
-		  float x;
-		  cout << "Number to delete: ";
-		  cin.ignore();
-		  getline(cin, str);
-		  istringstream iss(str);
-		  while (iss >> x) {
-			dbList.deleteItem(x);
-
-		  }
-		  dbList.print();
-
-		  break;
-		}
-		case 'p': {
-		  stringList.print();
-		  break;
-		}
-		case 'r': {
-
-		  stringList.printReverse();
-		  break;
-		}
-		case 'm': {
-		  stringList.print();
-		  cout << "\nMode: " << stringList.mode();
-		  break;
-		}
-		case 's': {
-		  cout << "Original List: ";
-		  stringList.print();
-		  cout << "\nSwapped List: ";
-		  stringList.swapAlternate();
-		  stringList.print();
-		  break;
-		}
-		case 'q': { // quit command that stops the while loop and exits the program
-		  cout << "Quitting program..." << endl;
-		  loop = false;
-		  break;
-		}
-		default: { // this will print when the command is invalid
-		  cout << "Invalid command, try again!" << endl;
-		  break;
-		}
-
+	if (fs.is_open()) {
+	  string file;
+	  while (getline(fs, file)) {
+		istringstream currentString(file);
+		stringList.insertItem(file);
 	  }
-	}
 
-  } else {
-	cout << "Invalid entry";
+	  //stringList.print();/fs.close();
+	  cout << "insert (i), delete (d), length (l), print (p), deleteSub (b), mode (m),\n"
+			  "printReverse(r), swapAtl(s), quit (q)" << endl;
+	  bool loop = true;
+	  char character; // character input when entering a command
+
+	  while (loop) {
+		cout << "\nEnter a command: ";
+		cin >> character;
+		cout << "\n";
+
+		switch (character) {
+		  case 'i': {
+			string num;
+			cout << "Item to insert: ";
+//			cin.ignore();
+//			getline(cin, num);
+cin>> num;
+			stringList.insertItem(num);
+			//stringList.sorting(num);
+			cout << endl;
+			stringList.print();
+
+			cout << endl;
+
+			break;
+		  }
+		  case 'd': {
+			string str;
+			float x;
+			cout << "Number to delete: ";
+			cin.ignore();
+			getline(cin, str);
+			istringstream iss(str);
+			while (iss >> x) {
+			  dbList.deleteItem(x);
+
+			}
+			dbList.print();
+
+			break;
+		  }
+		  case 'p': {
+			stringList.print();
+			break;
+		  }
+		  case 'r': {
+
+			stringList.printReverse();
+			break;
+		  }
+		  case 'm': {
+			stringList.print();
+			cout << "\nMode: " << stringList.mode();
+			break;
+		  }
+		  case 's': {
+			cout << "Original List: ";
+			stringList.print();
+			cout << "\nSwapped List: ";
+			stringList.swapAlternate();
+			stringList.print();
+			break;
+		  }
+		  case 'q': { // quit command that stops the while loop and exits the program
+			cout << "Quitting program..." << endl;
+			loop = false;
+			break;
+		  }
+		  default: { // this will print when the command is invalid
+			cout << "Invalid command, try again!" << endl;
+			break;
+		  }
+
+		}
+	  }
+
+	} else {
+	  cout << "Invalid entry";
+	}
   }
 }
-
-
-
-

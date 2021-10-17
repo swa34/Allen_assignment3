@@ -26,7 +26,17 @@ class DoublyLinkedList {
  public:
 
   DoublyLinkedList();
-   //~DoublyLinkedList();
+  ~DoublyLinkedList(){
+	NodeType<T> *t;
+	while(head!=NULL){
+	  t = head;
+	  head = head->next;
+	  free(t);
+	}
+	tail = NULL;
+	head = NULL;
+  }
+
   int lengthIs() const;
   void insertItem(T &item);
   void deleteItem(T &item);
