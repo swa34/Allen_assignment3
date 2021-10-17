@@ -5,42 +5,44 @@
 #ifndef ALLEN_ASSIGNMENT3__DOUBLYLINKEDLIST_H_
 #define ALLEN_ASSIGNMENT3__DOUBLYLINKEDLIST_H_
 #include <initializer_list>
-enum Comparison {LESS, GREATER, EQUAL};
 using namespace std;
 
 template<class T>
 struct NodeType {
-  int strsrt;
   T data;
   NodeType<T> *next;
-  NodeType<T> *back ;
-  NodeType<T>* left;
-  NodeType<T>* right;
+  NodeType<T> *back;
 
 };
 template<class T>
 class DoublyLinkedList {
   int length;
+  int count{};
   NodeType<T> *head;
   NodeType<T> *current;
   NodeType<T> *tail;
   NodeType<T> *listData;
 
  public:
+
   DoublyLinkedList();
- // ~DoublyLinkedList();
- Comparison compareTo(T &item);
-  DoublyLinkedList( std::initializer_list<T>&);
+   ~DoublyLinkedList();
   int lengthIs() const;
-  void retrieveItem(T &item, bool &found);
-  void insertItem(T item);
+  void insertItem(T &item);
   void deleteItem(T &item);
   void resetList();
   void print();
-  auto getValue() ;
+  auto getValue();
   void initialize(T num);
-  void printReverse() ;
-  void sorting( T &item);
+  void printReverse();
+  void sorting(T &item);
+  T searchForL(T item);
+  void swapAlternate();
+  T mode();
+  void printRange(NodeType<T> *startingNode, NodeType<T> *endingNode);
+  void deleteSubsection(T &item1,T &item2);
+  T *delete_index(T &item);
+// int countIs()const;
 //  bool findItem( T, NodeType<T>*& predecessor)
  private:
   int value{};

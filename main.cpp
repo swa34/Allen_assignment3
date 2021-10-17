@@ -11,14 +11,12 @@ int main() {
   DoublyLinkedList<float> dbList;
   DoublyLinkedList<string> stringList;
   char input;
-  int fileInput;
   vector<int> arr;
   cout << "Enter list type (i - int, f - float, s - std::string):";
   cin >> input;
   cout << "Test line " << input << endl;
   if (input == 'i') {
 	ifstream fs;
-	"C:\\Users\\scott\\CLionProjects\\Allen_assignment2\\input.txt";
 	fs.open(R"(C:\Users\scott\CLionProjects\Allen_assignment3\int-input)", fstream::in); // reads input file
 	//fs.open(argv[1], fstream::in); // reads input file
 	int n;
@@ -51,20 +49,33 @@ int main() {
 
 		  break;
 		}
+		case 'b': {
+		  int lb=0;
+		  int ub=0;
+		  cout << "Enter lower bound: ";
+		  cin >> lb;
+		  cout << "Enter upper bound: ";
+		  cin >> ub;
+		  cout << "Original List: ";
+		  intList.print();
+		  cout << "\nModified List: ";
+		  intList.deleteSubsection(lb,ub);
+		  intList.print();
+		  break;
+		}
 		case 'd': {
 		  string str;
 		  string s;
 		  int x;
 		  cout << "Number to delete: ";
 		  cin.ignore();
-		  getline( cin, str );
+		  getline(cin, str);
 		  istringstream iss(str);
-		  while(iss >> x){
+		  while (iss >> x) {
 			intList.deleteItem(x);
 
 		  }
 		  intList.print();
-
 
 		  break;
 		}
@@ -81,6 +92,27 @@ int main() {
 		  stringList.print();
 		  break;
 		}
+		case 'l': {
+
+		  cout << "The length is: " << intList.lengthIs() << endl;
+
+		  break;
+		}
+		case 'm': {
+		  intList.print();
+		  cout << "\nMode: " << intList.mode();
+		  break;
+		}
+
+		case 's': {
+		  cout << "Original List: ";
+		  intList.print();
+		  cout << "\nSwapped List: ";
+		  intList.swapAlternate();
+		  intList.print();
+		  break;
+		}
+
 		case 'q': { // quit command that stops the while loop and exits the program
 		  cout << "Quitting program..." << endl;
 		  loop = false;
@@ -95,7 +127,6 @@ int main() {
 	}
   } else if (input == 'f') {
 	ifstream fs;
-	"C:\\Users\\scott\\CLionProjects\\Allen_assignment2\\input.txt";
 	fs.open(R"(C:\Users\scott\CLionProjects\Allen_assignment3\float-input)", fstream::in); // reads input file
 	//fs.open(argv[1], fstream::in); // reads input file
 	float n;
@@ -125,7 +156,7 @@ int main() {
 		  cout << endl;
 		  dbList.print();
 
-		  cout << endl;
+		  // cout << endl;
 
 		  break;
 		}
@@ -135,14 +166,13 @@ int main() {
 		  float x;
 		  cout << "Number to delete: ";
 		  cin.ignore();
-		  getline( cin, str );
+		  getline(cin, str);
 		  istringstream iss(str);
-		  while(iss >> x){
+		  while (iss >> x) {
 			dbList.deleteItem(x);
 
 		  }
 		  dbList.print();
-
 
 		  break;
 		}
@@ -155,6 +185,19 @@ int main() {
 		  dbList.print();
 		  stringList.printReverse();
 		  stringList.print();
+		  break;
+		}
+		case 'm': {
+		  dbList.print();
+		  cout << "\nMode: " << dbList.mode();
+		  break;
+		}
+		case 's': {
+		  cout << "Original List: ";
+		  dbList.print();
+		  cout << "\nSwapped List: ";
+		  dbList.swapAlternate();
+		  dbList.print();
 		  break;
 		}
 		case 'q': { // quit command that stops the while loop and exits the program
@@ -172,7 +215,6 @@ int main() {
 ///*START of STRING *********/
   } else if (input == 's') {
 	ifstream fs;
-	"C:\\Users\\scott\\CLionProjects\\Allen_assignment2\\input.txt";
 	fs.open(R"(C:\Users\scott\CLionProjects\Allen_assignment3\string-input)", fstream::in); // reads input file
 	//fs.open(argv[1], fstream::in); // reads input file
 	string str;
@@ -197,9 +239,9 @@ int main() {
 		  string num;
 		  cout << "Item to insert: ";
 		  cin.ignore();
-		  getline( cin, num );
+		  getline(cin, num);
 		 // stringList.insertItem(num);
-		  stringList.sorting(num);
+		   stringList.sorting(num);
 		  cout << endl;
 		  stringList.print();
 
@@ -209,18 +251,16 @@ int main() {
 		}
 		case 'd': {
 		  string str;
-		  string s;
 		  float x;
 		  cout << "Number to delete: ";
 		  cin.ignore();
-		  getline( cin, str );
+		  getline(cin, str);
 		  istringstream iss(str);
-		  while(iss >> x){
+		  while (iss >> x) {
 			dbList.deleteItem(x);
 
 		  }
 		  dbList.print();
-
 
 		  break;
 		}
@@ -232,6 +272,19 @@ int main() {
 		  dbList.printReverse();
 		  dbList.print();
 		  stringList.printReverse();
+		  stringList.print();
+		  break;
+		}
+		case 'm': {
+		  stringList.print();
+		  cout << "\nMode: " << stringList.mode();
+		  break;
+		}
+		case 's': {
+		  cout << "Original List: ";
+		  stringList.print();
+		  cout << "\nSwapped List: ";
+		  stringList.swapAlternate();
 		  stringList.print();
 		  break;
 		}
@@ -248,9 +301,11 @@ int main() {
 	  }
 	}
 
-
   } else {
 	cout << "Invalid entry";
   }
 }
+
+
+
 
